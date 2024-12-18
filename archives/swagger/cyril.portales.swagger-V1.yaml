@@ -1,0 +1,228 @@
+openapi: '3.1.0'
+
+info:
+  description: API HUB for museum across the world
+  title: MuseumHub API
+  version: '0.0.1'
+paths:
+  /museum/{museumId}:
+    get:
+      tags:
+        - museums
+      summary: Get detail on given museum
+      operationId: getMuseumById
+      responses:
+        '200':
+          description: Return a JSON object of Museum
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Museum'
+        '404':
+          description: Museum not found
+          content:
+            application/json: 
+              schema: 
+                type: object
+                $ref: '#/components/schemas/Error'
+                examples: 
+                  - { "code": "E03", "message": "Museum not found"}
+  /museums:
+    get:
+      tags:
+        - museums
+      summary: Get list of museum
+      description: Get a list of all museum in database
+      operationId: getMuseumList
+      responses: 
+        '200':
+          description: Return JSON list of Museum object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Museum'
+    post:
+      tags:
+        - museums
+      summary: Add a museum
+      description: Add a new museum to the list.
+      operationId: addMuseum
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/Museum'
+      responses:
+        '201':
+          description: URI of the new Museum
+          content: 
+            text/plain: 
+              schema: 
+                type: string
+                examples: 
+                  - "http://trucmuch"
+  /config:
+    get:
+      operationId: getConfigList
+      summary: Get list of Param (all parameters)
+      description: Get the list of all parameters available on the server
+      tags:
+        - configuration
+      responses: 
+        '200':
+          description: Return a list of Param object
+          content:
+            application/json: 
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Param'
+  /config/{paramName}:
+    patch:
+      tags: 
+        - configuration
+      operationId: updateServerParameter
+      description: Update the value of the given server parameter
+      parameters: 
+        - name: paramName
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody: 
+        required: true
+        content: 
+          application/json: 
+            schema: 
+              type: object
+              $ref: '#/components/schemas/Param'
+      responses: 
+        '200': 
+          description: Succesfully updated
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                $ref: '#/components/schemas/Param'
+    get:
+      operationId: getConfig
+      summary: Get detail on the given parameter in paht
+      tags:
+        - configuration
+      parameters: 
+        - name: paramName
+          in: path
+          required: true
+          schema: 
+            type: string
+            examples: 
+              - defaultPageSize
+              - defaultMuseumId
+      responses: 
+        '200':
+          description: Sucess. Param has been found
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                $ref: '#/components/schemas/Param'
+        '404':
+          description: Error. Object not found
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                $ref: '#/components/schemas/Error'
+                examples: 
+                  - { "code": "E02", "message": "Object not found in database"}
+
+  /search:
+    get:
+      tags:
+        - search
+      description: Search Object in museum in API
+      summary: Search Object in museum in API
+      parameters: 
+        - name: museum_id
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: -1
+        - name: q
+          in: query
+          required: false
+          schema: 
+            type: string
+            
+      responses:
+        '500':
+          description: error
+          content:
+            application/json: 
+              schema: 
+                type: object
+                $ref: '#/components/schemas/Error'
+
+        '200':
+          description: success
+          content:
+            application/json: 
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/MuseumObject'
+ 
+components:
+  schemas:
+    Museum:
+      description: Object representation of a museum
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    MuseumObject:
+      description: Object present in the database museum
+      type: object
+      properties:
+        objectID:
+          type: integer
+          format: int64
+          examples:
+            - 10
+            - 0
+        title:
+          type:	string
+          description:	Title, identifying phrase, or name given to a work of art
+      examples: 
+        - [{ "objectID": 5, "title": "Mona Paint" }]
+    Error:
+      description: Give an error code with a description
+      type: object
+      properties: 
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      examples: 
+        - { "code": "E01", "message": "An error occured"}
+    Param:
+      description: Server parameter. Allow to customize behavior
+      type: object
+      properties:
+        paramName:
+          type: string
+          exemples:
+            - defaultPageSize
+            - defaultMuseum
+        value:
+          type: string
+      examples: 
+        - { "paramName": "defaultPageSize", "value":"100"}

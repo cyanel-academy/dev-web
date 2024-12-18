@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "8ec1b4b0-a37b-40f8-a71a-3abb2778b91c",
+		"name": "letscount Counter",
+		"description": "This is a test of free API letscountapi. See [https://letscountapi.com](https://letscountapi.com) for more details",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4113091"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"current_value\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://letscountapi.com/cportales/search",
+					"protocol": "https",
+					"host": [
+						"letscountapi",
+						"com"
+					],
+					"path": [
+						"cportales",
+						"search"
+					]
+				},
+				"description": "Récupère la valeur de hit pour index"
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"current_value\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://letscountapi.com/cportales/search",
+					"protocol": "https",
+					"host": [
+						"letscountapi",
+						"com"
+					],
+					"path": [
+						"cportales",
+						"search"
+					]
+				},
+				"description": "Récupère la valeur de hit pour index"
+			},
+			"response": []
+		},
+		{
+			"name": "index counter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://letscountapi.com/cportales/index",
+					"protocol": "https",
+					"host": [
+						"letscountapi",
+						"com"
+					],
+					"path": [
+						"cportales",
+						"index"
+					]
+				},
+				"description": "Récupère la valeur de hit pour index"
+			},
+			"response": []
+		},
+		{
+			"name": "Increment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://letscountapi.com/cportales/index/increment",
+					"protocol": "https",
+					"host": [
+						"letscountapi",
+						"com"
+					],
+					"path": [
+						"cportales",
+						"index",
+						"increment"
+					]
+				},
+				"description": "Récupère la valeur de hit pour index"
+			},
+			"response": []
+		},
+		{
+			"name": "decrement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://letscountapi.com/cportales/index/decrement",
+					"protocol": "https",
+					"host": [
+						"letscountapi",
+						"com"
+					],
+					"path": [
+						"cportales",
+						"index",
+						"decrement"
+					]
+				},
+				"description": "Récupère la valeur de hit pour index"
+			},
+			"response": []
+		}
+	]
+}

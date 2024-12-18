@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Museum tour</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="styles/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <h1>Museum tour</h1>
+            <nav class="menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="stats.html">Statistics</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="search">
+                <h2>Search objects</h2>
+                <table>
+                        <tr>
+                            <th>Feature</th>
+                            <td id="hit_visit"></td>
+                        </tr>
+                        <tr>
+                            <th>Search</th>
+                            <td id="hit_search"></td>
+                        </tr>
+                        <tr>
+                            <th>View details</th>
+                            <td id="hit_detail"></td>
+                        </tr>
+                </table>
+            </section>
+        </main>
+        <footer class="footer">
+        </footer>
+        <script src="scripts/get_data.js"></script> 
+        <script src="scripts/visits.js"></script> 
+    </body>
+</html>

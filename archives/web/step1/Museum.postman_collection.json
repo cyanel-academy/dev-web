@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "16eaf5ae-514c-435d-b069-d247afe92e29",
+		"name": "Museum",
+		"description": "# Museum collection\n\nThis project show request on the Metropolitan Museum of Art at New-York city.\n\nThe API has 4 enpoints:\n\n- Departments: category of objects\n- Objects: list of objects\n- Object: object detail\n- Search: search object with criteria\n\n# Configuration \n\n## Global variables\n\n### museumURL\n\nCollection has the URL of the service in variable:\n\nmuseumURL = https://collectionapi.metmuseum.org\n\nTo use in request:\n\n{{museumURL}}/public/collection/v1/objects\n\n### depID\n\ndepID variable is set after the \"Get a list of department ID\" with the first returned value:\n\n```JavaScript\n//done in the test tab\nconsole.log(pm.response.json().departments[0].departmentId);\nvar depId = pm.response.json().departments[0].departmentId;\nconsole.log(depId);\npm.globals.set(\"depId\", depId);\n```\n\n# Resource\n\nhttps://metmuseum.github.io/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get a list of departments ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(pm.response.json().departments[0].departmentId);",
+							"var depId = pm.response.json().departments[0].departmentId;",
+							"console.log(depId);",
+							"pm.globals.set(\"depId\", depId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{museumURL}}/public/collection/v1/departments",
+					"host": [
+						"{{museumURL}}"
+					],
+					"path": [
+						"public",
+						"collection",
+						"v1",
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all objects in a category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{museumURL}}/public/collection/v1/objects?departmentIds=10",
+					"host": [
+						"{{museumURL}}"
+					],
+					"path": [
+						"public",
+						"collection",
+						"v1",
+						"objects"
+					],
+					"query": [
+						{
+							"key": "departmentIds",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search object with a keywork by department ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{museumURL}}/public/collection/v1/search?departmentId={{depId}}&hasImage=true&q=s",
+					"host": [
+						"{{museumURL}}"
+					],
+					"path": [
+						"public",
+						"collection",
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "departmentId",
+							"value": "{{depId}}"
+						},
+						{
+							"key": "hasImage",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "s"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search object with a keywork by department ID only visible on museum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{museumURL}}/public/collection/v1/search?departmentId={{depId}}&isOnView=true&q=s",
+					"host": [
+						"{{museumURL}}"
+					],
+					"path": [
+						"public",
+						"collection",
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "departmentId",
+							"value": "{{depId}}"
+						},
+						{
+							"key": "isOnView",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "s"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get detail of an object",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{museumURL}}/public/collection/v1/objects/551786",
+					"host": [
+						"{{museumURL}}"
+					],
+					"path": [
+						"public",
+						"collection",
+						"v1",
+						"objects",
+						"551786"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all objects (Bonus)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{museumURL}}/public/collection/v1/objects",
+					"host": [
+						"{{museumURL}}"
+					],
+					"path": [
+						"public",
+						"collection",
+						"v1",
+						"objects"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "museumURL",
+			"value": "https://collectionapi.metmuseum.org",
+			"type": "default"
+		}
+	]
+}

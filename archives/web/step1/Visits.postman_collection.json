@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "e609e4cd-223d-4787-9834-955261c955e7",
+		"name": "Visits",
+		"description": "API documentation is available at https://countapi.xyz/#format",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get/Hit the number of \"visit\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.countapi.xyz/hit/cpo/visits",
+					"protocol": "https",
+					"host": [
+						"api",
+						"countapi",
+						"xyz"
+					],
+					"path": [
+						"hit",
+						"cpo",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Info visits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.countapi.xyz/info/cpo/visits",
+					"protocol": "https",
+					"host": [
+						"api",
+						"countapi",
+						"xyz"
+					],
+					"path": [
+						"info",
+						"cpo",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get/hit the number of \"search\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.countapi.xyz/hit/cpo/search",
+					"protocol": "https",
+					"host": [
+						"api",
+						"countapi",
+						"xyz"
+					],
+					"path": [
+						"hit",
+						"cpo",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Info search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.countapi.xyz/info/cpo/search",
+					"protocol": "https",
+					"host": [
+						"api",
+						"countapi",
+						"xyz"
+					],
+					"path": [
+						"info",
+						"cpo",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get/hit the total number of click on \"detail\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.countapi.xyz/hit/cpo/details",
+					"protocol": "https",
+					"host": [
+						"api",
+						"countapi",
+						"xyz"
+					],
+					"path": [
+						"hit",
+						"cpo",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Info details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.countapi.xyz/info/cpo/details",
+					"protocol": "https",
+					"host": [
+						"api",
+						"countapi",
+						"xyz"
+					],
+					"path": [
+						"info",
+						"cpo",
+						"details"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

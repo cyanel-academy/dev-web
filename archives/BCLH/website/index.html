@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil MuseumHub</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur MuseumHub</h1>
+    </header>
+
+    <main>
+        <p>Vous êtes sur la page d'accueil du musée. Vous pouvez rechercher un objet du musée.</p>
+        
+        <label for="categorie-select">Choisissez une catégorie d'art :</label>
+        <select id="categorie-select">
+            <!-- Les options seront insérées ici par JavaScript -->
+        </select>
+
+        <br><br>
+
+        <!-- Zone de texte pour entrer des mots-clés -->
+        <label for="keywords">Entrez des mots-clés pour la recherche :</label>
+        <input type="text" id="keywords" name="keywords" placeholder="Ex: peinture, sculpture, etc.">
+
+        <br><br>
+
+        <!-- Bouton Rechercher -->
+        <button id="search-btn">RECHERCHER</button>
+
+        <br><br>
+
+        <!-- Liste des résultats -->
+        <ul id="results-list"></ul>
+        <a href="http://192.168.1:5000/search?...&offset=10"
+    </main>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>
